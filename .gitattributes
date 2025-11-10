@@ -1,0 +1,8 @@
+# Batch files must use Windows line endings
+*.bat text eol=crlf
+
+# Shell scripts must use Unix line endings
+*.sh text eol=lf
+
+# Auto detect text files and normalize to LF on commit
+* text=auto
