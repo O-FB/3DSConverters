@@ -1,46 +1,24 @@
-<p align="center"><a href="https://github.com/dihny/3DSConverters"><img src="logo.svg" alt="3DS ROM Manager" width="1000" height="1000"></a></p>
-<h3 align="center">A comprehensive batch tool for managing Nintendo 3DS ROM files</h3>
-<hr>
+[![3DS ROM Manager](logo.svg)](https://github.com/dihny/3DSConverters)
+
+![GitHub Release](https://img.shields.io/github/v/release/dihny/3DSConverters?style=flat)
+![GitHub Repo stars](https://img.shields.io/github/stars/dihny/3DSConverters?style=flat)
+![Issues](https://img.shields.io/github/issues/dihny/3DSConverters?style=flat)
 
 **3DS ROM Manager Suite** is an all-in-one tool for converting, decrypting, and compressing Nintendo 3DS ROM files. Built upon community tools and inspired by rohithvishaal's Python concept, this suite provides a menu-driven interface for managing your 3DS game library.
 
-![GitHub Release](https://img.shields.io/github/v/release/dihny/3DSConverters?style=flat) ![GitHub Repo stars](https://img.shields.io/github/stars/dihny/3DSConverters?style=flat) ![Issues](https://img.shields.io/github/issues/dihny/3DSConverters?style=flat)
-
 # Features
-
-### Format Conversion
-- **CCI/3DS to CIA**: Convert cartridge dumps to installable format with automatic encryption handling
-- **CIA to CCI**: Convert installable format back to cartridge dumps (decrypted files only)
-- Uses 3dsconv for optimal compatibility and firmware spoof removal
-- Batch processing with visual progress bars
-
-### Decryption Support
-- **Decrypt Files**: Batch decrypt encrypted ROMs
-- **Decrypt to CIA**: Decrypt and output as installable format
-- **Decrypt to CCI**: Decrypt and output as cartridge format
-- Integrates with Batch CIA 3DS Decryptor Redux
-- Smart detection of already-decrypted files (skips `-decrypted` suffix)
-
-### Z3DS Compression
-- **Compress to Z3DS**: Create compressed files for Azahar emulator (`.z3ds`, `.zcci`, `.zcia`)
-- Three compression levels: Fast (Level 1), Balanced (Level 3), Best (Level 9)
-- **Decompress Z3DS**: Extract compressed files back to original format
-- **View Z3DS Info**: Display detailed compression statistics
-
-### Additional Features
-- Visual progress tracking for all batch operations
-- Optional source file deletion after successful operations (saves disk space)
-- Session logging with detailed operation history
-- File inventory browser with pagination
-- Temporary file cleanup utility
-- Input sanitization to prevent command injection
-- Comprehensive statistics dashboard
+- **Format Conversion** – Convert between .3ds, .cci, and .cia formats with batch support.
+- **Decryption** – Decrypt encrypted ROMs to CIA or CCI formats.
+- **Z3DS Compression** – Compress and decompress files for the Azahar emulator, with three quality levels.
+- **Batch Processing** – Run operations on multiple files at once, with progress tracking.
+- **Utilities** – File browser, temporary file cleanup, and session statistics.
+- **Safe & User-Friendly** – Input validation, optional source deletion, and logs for all operations.
 
 # Installation
 
 ### Windows
 
-Download the latest release from [Releases](https://github.com/dihny/3DSConverters/releases).
+> 📦 **[Download Latest Release](https://github.com/dihny/3DSConverters/releases/latest)**
 
 All required tools are included in the `bin/` directory.
 
@@ -60,7 +38,7 @@ After extraction, your directory should look like this:
 │   ├── makerom.exe
 │   ├── ctrtool.exe
 │   ├── 3dsconv.exe
-│   ├── seed.db
+│   ├── seeddb.bin
 │   ├── z3ds_compressor.exe
 │   └── decrypt.exe
 ├── Batch CIA 3DS Decryptor Redux.bat
@@ -75,29 +53,6 @@ After extraction, your directory should look like this:
 3. Select operation from the menu
 4. Press Enter when prompted for filename to process all compatible files in batch mode
 
-### Menu Options
-
-```
- BASIC CONVERSION
- 1. CCI/3DS to CIA      Cartridge to installable format
- 2. CIA to CCI          Installable to cartridge format
-
- DECRYPTION & CONVERSION
- 3. Decrypt Files       Decrypt encrypted ROMs
- 4. Decrypt to CIA      Decrypt and output as CIA
- 5. Decrypt to CCI      Decrypt and output as CCI
-
- AZAHAR EMULATOR (Z3DS FORMAT)
- 6. Compress to Z3DS    Compress ROMs for Azahar
- 7. Decompress Z3DS     Extract from Z3DS format
- 8. View Z3DS Info      Show compressed file details
-
- UTILITIES
- 9. List Files          Show all ROM files in folder
- 10. Statistics         View session statistics
- 11. Clean Temp         Remove temporary files
-```
-
 # Supported Formats
 
 | Extension | Format | Description |
@@ -111,7 +66,6 @@ After extraction, your directory should look like this:
 - CIA to CCI conversion only supports decrypted game CIAs. Encrypted files, DLC, updates, and system titles are not compatible.
 - Decryption features require `Batch CIA 3DS Decryptor Redux.bat` to be present in the root directory.
 - Z3DS compression features require `z3ds_compressor.exe` in the `bin/` directory.
-- Files with special characters (`&`, `|`, `<`, `>`, `^`, `!`) in the filename will be rejected for security.
 - All operations are logged to `log/operations_[date].log` with timestamps.
 - It's recommended to keep backups of important files before batch processing.
 
@@ -138,6 +92,7 @@ Special thanks to the 3DS homebrew community for their continued development and
 
 This project is released under the MIT License. Each integrated tool retains its original license - users must comply with the individual licenses of all bundled components.
 
-# Disclaimer
-
-This tool is intended for personal backup and archival purposes only. Users are responsible for complying with local laws regarding game backups and ROM files. The author does not condone or support piracy.
+>  ### ⚠️ Disclaimer:
+>  This tool is intended for personal backup, archival, and educational purposes only.
+>  Users are responsible for complying with local laws regarding game backups and ROM files.
+>  The author does not condone or support piracy in any way.
