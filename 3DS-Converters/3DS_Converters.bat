@@ -40,8 +40,8 @@ if not exist "bin" mkdir "bin"
 if not exist "!LogFile!" (
     echo 3DS ROM Manager Suite !Version! > "!LogFile!"
     echo [i] = Information >> "!LogFile!"
-    echo [!] = Error >> "!LogFile!"
-    echo [^] = Warning >> "!LogFile!"
+    echo [^^!] = Error >> "!LogFile!"
+    echo [~] = Warning >> "!LogFile!"
     echo. >> "!LogFile!"
     if defined datetime (
         echo Log Created: %datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2% >> "!LogFile!"
@@ -318,7 +318,7 @@ if /i "!deletePrompt!"=="Y" (
     set "deleteSource=1"
     echo.
     echo ================================================================
-    echo   [!] WARNING: Source files will be DELETED after conversion!
+    echo   [^^!] WARNING: Source files will be DELETED after conversion^^!
     echo ================================================================
 ) else (
     set "deleteSource=0"
@@ -351,7 +351,7 @@ echo About to convert !fileCount! file(s) to CIA format.
 echo.
 if "!deleteSource!"=="1" (
     echo ================================================================
-    echo   [!] WARNING: Source files will be DELETED!
+    echo   [^^!] WARNING: Source files will be DELETED^^!
     echo ================================================================
     echo.
 )
@@ -408,13 +408,13 @@ for %%f in (*.cci *.3ds) do (
             ) else (
                 echo  [WARN] File created but tool reported error
                 echo  [INFO] Source file kept due to warning
-                echo %date% - %time:~0,-3% = [^] Warning: !fullname! >> "!LogFile!"
+                echo %date% - %time:~0,-3% = [~] Warning: !fullname! >> "!LogFile!"
                 set /a totalSuccess+=1
                 set /a opSuccess+=1
             )
         ) else (
             echo  [FAIL] Conversion failed
-            echo %date% - %time:~0,-3% = [!] Failed: !fullname! >> "!LogFile!"
+            echo %date% - %time:~0,-3% = [^^!] Failed: !fullname! >> "!LogFile!"
             set /a totalFailed+=1
             set /a opFailed+=1
         )
@@ -446,7 +446,7 @@ echo Ready to convert: %rom%
 echo.
 if "!deleteSource!"=="1" (
     echo ================================================================
-    echo   [!] WARNING: Source file will be DELETED after conversion!
+    echo   [^^!] WARNING: Source file will be DELETED after conversion^^!
     echo ================================================================
     echo.
 )
@@ -484,13 +484,13 @@ if exist "%basename%.cia" (
     ) else (
         echo  [WARN] File created but tool reported error
         echo  [INFO] Source file kept due to warning
-        echo %date% - %time:~0,-3% = [^] Warning %rom% >> "!LogFile!"
+        echo %date% - %time:~0,-3% = [~] Warning %rom% >> "!LogFile!"
         set /a totalSuccess+=1
         set /a opSuccess+=1
     )
 ) else (
     echo  [FAIL] Conversion failed
-    echo %date% - %time:~0,-3% = [!] Failed %rom% >> "!LogFile!"
+    echo %date% - %time:~0,-3% = [^^!] Failed %rom% >> "!LogFile!"
     set /a totalFailed+=1
     set /a opFailed+=1
 )
@@ -510,7 +510,7 @@ echo ================================================================
 
 if %opSuccess% GTR 0 (
     echo.
-    echo  [SUCCESS] %opSuccess% file^(s^) converted to CIA!
+    echo  [SUCCESS] %opSuccess% file^(s^) converted to CIA^^!
     echo  Ready to install or use in emulators.
 )
 
@@ -531,7 +531,7 @@ if %opSkipped% GTR 0 (
 
 if "!deleteSource!"=="1" if %deletedCount% GTR 0 (
     echo.
-    echo  [CLEANUP] %deletedCount% source file^(s^) deleted - space freed!
+    echo  [CLEANUP] %deletedCount% source file^(s^) deleted - space freed^^!
 )
 
 echo.
@@ -584,7 +584,7 @@ echo ================================================================
 echo.
 echo After conversion, you can delete source files to save space.
 echo.
-echo WARNING: Deletion is PERMANENT and cannot be undone!
+echo WARNING: Deletion is PERMANENT and cannot be undone^^!
 echo          Only successfully converted files will be deleted.
 echo.
 set /p "deletePrompt=Delete source files after conversion? (Y/N, default=N): "
@@ -592,7 +592,7 @@ set /p "deletePrompt=Delete source files after conversion? (Y/N, default=N): "
 if /i "!deletePrompt!"=="Y" (
     set "deleteSource=1"
     echo.
-    echo [!] Source files WILL be deleted after successful conversion
+    echo [^^!] Source files WILL be deleted after successful conversion
 ) else (
     set "deleteSource=0"
     echo.
@@ -625,7 +625,7 @@ goto :ciaToCci_single
 echo About to convert !ciaCount! CIA file(s) to CCI format.
 if "!deleteSource!"=="1" (
     echo.
-    echo WARNING: Source files will be DELETED after conversion!
+    echo WARNING: Source files will be DELETED after conversion^^!
 )
 echo.
 set /p "confirm=Press ENTER to continue, or M to cancel: "
@@ -688,13 +688,13 @@ for %%f in (*.cia) do (
             ) else (
                 echo [WARN] File created but tool reported error
                 echo [INFO] Source file kept due to conversion warning
-                echo %date% - %time:~0,-3% = [^] Warning !fullname! >> "!LogFile!"
+                echo %date% - %time:~0,-3% = [~] Warning !fullname! >> "!LogFile!"
                 set /a totalSuccess+=1
                 set /a opSuccess+=1
             )
         ) else (
             echo [FAIL] Incompatible ^(DLC/Update/Encrypted^)
-            echo %date% - %time:~0,-3% = [!] Failed !fullname! >> "!LogFile!"
+            echo %date% - %time:~0,-3% = [^^!] Failed !fullname! >> "!LogFile!"
             set /a totalFailed+=1
             set /a opFailed+=1
         )
@@ -724,7 +724,7 @@ if exist "%basename%.cci" (
 echo Ready to convert: %rom%
 if "!deleteSource!"=="1" (
     echo.
-    echo WARNING: Source file will be DELETED after conversion!
+    echo WARNING: Source file will be DELETED after conversion^^!
 )
 echo.
 set /p "confirm=Press ENTER to continue, or M to cancel: "
@@ -764,13 +764,13 @@ if exist "%basename%.cci" (
     ) else (
         echo [WARN] File created but tool reported error
         echo [INFO] Source file kept due to conversion warning
-        echo %date% - %time:~0,-3% = [^] Warning %rom% >> "!LogFile!"
+        echo %date% - %time:~0,-3% = [~] Warning %rom% >> "!LogFile!"
         set /a totalSuccess+=1
         set /a opSuccess+=1
     )
 ) else (
     echo [FAIL] Conversion failed
-    echo %date% - %time:~0,-3% = [!] Failed %rom% >> "!LogFile!"
+    echo %date% - %time:~0,-3% = [^^!] Failed %rom% >> "!LogFile!"
     set /a totalFailed+=1
     set /a opFailed+=1
 )
@@ -792,7 +792,7 @@ echo ================================================================
 
 if %opSuccess% GTR 0 (
     echo.
-    echo  [SUCCESS] %opSuccess% file^(s^) converted to CCI!
+    echo  [SUCCESS] %opSuccess% file^(s^) converted to CCI^^!
 )
 
 if %opFailed% GTR 0 (
@@ -890,7 +890,7 @@ if %newTotal% GTR 0 (
     if %newCIA% GTR 0 echo   - %newCIA% file^(s^) decrypted to CIA
     if %newCCI% GTR 0 echo   - %newCCI% file^(s^) decrypted to CCI
     echo.
-    echo [SUCCESS] %newTotal% file^(s^) decrypted!
+    echo [SUCCESS] %newTotal% file^(s^) decrypted^^!
 ) else (
     echo [INFO] No new files created
     echo.
@@ -1161,9 +1161,9 @@ if "%compLevel%"=="2" set "levelArg=-3"
 if "%compLevel%"=="3" set "levelArg=-9"
 
 :: Display compression level
-if "%compLevel%"=="1" set "levelName=Fast ^(^Level 1^)^"
-if "%compLevel%"=="2" set "levelName=Balanced ^(^Level 3^)^"
-if "%compLevel%"=="3" set "levelName=Best ^(^Level 9^)^"
+if "%compLevel%"=="1" set "levelName=Fast ^(Level 1^)"
+if "%compLevel%"=="2" set "levelName=Balanced ^(Level 3^)"
+if "%compLevel%"=="3" set "levelName=Best ^(Level 9^)"
 
 echo.
 echo Compression: %levelName%
@@ -1183,7 +1183,7 @@ if /i "!deletePrompt!"=="Y" (
     set "deleteSource=1"
     echo.
     echo ================================================================
-    echo   [!] WARNING: Source files will be DELETED after compression!
+    echo   [^^!] WARNING: Source files will be DELETED after compression^^!
     echo ================================================================
 ) else (
     echo.
@@ -1276,13 +1276,13 @@ for %%f in (%selectedPattern%) do (
                     ) else (
                         echo  [WARN] File created but tool reported error
                         echo  [INFO] Source file kept due to warning
-                        echo %date% - %time:~0,-3% = [^] Warning %%f >> "!LogFile!"
+                        echo %date% - %time:~0,-3% = [~] Warning %%f >> "!LogFile!"
                         set /a totalSuccess+=1
                         set /a opSuccess+=1
                     )
                 ) else (
                     echo  [FAIL] Compression failed
-                    echo %date% - %time:~0,-3% = [!] Failed %%f >> "!LogFile!"
+                    echo %date% - %time:~0,-3% = [^^!] Failed %%f >> "!LogFile!"
                     set /a totalFailed+=1
                     set /a opFailed+=1
                 )
@@ -1334,7 +1334,7 @@ echo Processing: %rom%
 echo Output:     %expectedOutput%
 if "!deleteSource!"=="1" (
     echo.
-    echo WARNING: Source file will be DELETED after compression!
+    echo WARNING: Source file will be DELETED after compression^^!
 )
 echo.
 
@@ -1369,13 +1369,13 @@ if exist "%expectedOutput%" (
     ) else (
         echo [WARN] File created but tool reported error
         echo [INFO] Source file kept due to compression warning
-        echo %date% - %time:~0,-3% = [^] Warning %rom% >> "!LogFile!"
+        echo %date% - %time:~0,-3% = [~] Warning %rom% >> "!LogFile!"
         set /a totalSuccess+=1
         set /a opSuccess+=1
     )
 ) else (
     echo [FAIL] Compression failed
-    echo %date% - %time:~0,-3% = [!] Failed %rom% >> "!LogFile!"
+    echo %date% - %time:~0,-3% = [^^!] Failed %rom% >> "!LogFile!"
     set /a totalFailed+=1
     set /a opFailed+=1
 )
@@ -1396,7 +1396,7 @@ echo ================================================================
 
 if %opSuccess% GTR 0 (
     echo.
-    echo  [SUCCESS] %opSuccess% file^(s^) compressed!
+    echo  [SUCCESS] %opSuccess% file^(s^) compressed^^!
     echo.
     echo  Output formats:
     if "%fileTypeChoice%"=="1" echo    - .z3ds files created
@@ -1437,7 +1437,7 @@ pause
 goto menu
 
 :: ============================================================================
-:: DECOMPRESS Z3DS FORMAT (FIXED WARNING)
+:: DECOMPRESS Z3DS FORMAT
 :: ============================================================================
 :decompressZ3ds
 if "%hasZ3dsCompressor%"=="0" goto :noCompressor
@@ -1480,7 +1480,7 @@ if /i "!deletePrompt!"=="Y" (
     set "deleteSource=1"
     echo.
     echo ================================================================
-    echo   WARNING: Compressed files will be DELETED after decompression!
+    echo   WARNING: Compressed files will be DELETED after decompression^^!
     echo ================================================================
 ) else (
     set "deleteSource=0"
@@ -1567,13 +1567,13 @@ for %%f in (*.zcci *.zcia *.z3ds *.z3dsx) do (
             ) else (
                 echo  [WARN] File created but tool reported error
                 echo  [INFO] Compressed file kept due to warning
-                echo %date% - %time:~0,-3% = [^] Warning %%f >> "!LogFile!"
+                echo %date% - %time:~0,-3% = [~] Warning %%f >> "!LogFile!"
                 set /a totalSuccess+=1
                 set /a opSuccess+=1
             )
         ) else (
             echo  [FAIL] Decompression failed
-            echo %date% - %time:~0,-3% = [!] Failed %%f >> "!LogFile!"
+            echo %date% - %time:~0,-3% = [^^!] Failed %%f >> "!LogFile!"
             set /a totalFailed+=1
             set /a opFailed+=1
         )
@@ -1615,7 +1615,7 @@ echo Output: %outfile%
 echo.
 if "!deleteSource!"=="1" (
     echo ================================================================
-    echo   WARNING: Compressed file will be DELETED after decompression!
+    echo   WARNING: Compressed file will be DELETED after decompression^^!
     echo ================================================================
     echo.
 )
@@ -1654,13 +1654,13 @@ if exist "%outfile%" (
     ) else (
         echo  [WARN] File created but tool reported error
         echo  [INFO] Compressed file kept due to warning
-        echo %date% - %time:~0,-3% = [^] Warning %rom% >> "!LogFile!"
+        echo %date% - %time:~0,-3% = [~] Warning %rom% >> "!LogFile!"
         set /a totalSuccess+=1
         set /a opSuccess+=1
     )
 ) else (
     echo  [FAIL] Decompression failed
-    echo %date% - %time:~0,-3% = [!] Failed %rom% >> "!LogFile!"
+    echo %date% - %time:~0,-3% = [^^!] Failed %rom% >> "!LogFile!"
     set /a totalFailed+=1
     set /a opFailed+=1
 )
@@ -1680,7 +1680,7 @@ echo ================================================================
 
 if %opSuccess% GTR 0 (
     echo.
-    echo  [SUCCESS] %opSuccess% file^(s^) decompressed!
+    echo  [SUCCESS] %opSuccess% file^(s^) decompressed^^!
     echo  Files restored to original format.
 )
 
@@ -1696,7 +1696,7 @@ if %opSkipped% GTR 0 (
 
 if "!deleteSource!"=="1" if %deletedCount% GTR 0 (
     echo.
-    echo  [CLEANUP] %deletedCount% compressed file^(s^) deleted - space freed!
+    echo  [CLEANUP] %deletedCount% compressed file^(s^) deleted - space freed^^!
 )
 
 echo.
@@ -1898,7 +1898,7 @@ if %currentCategory% EQU 6 (
 :: All done
 cls
 echo ================================================================
-echo   All categories reviewed!
+echo   All categories reviewed^^!
 echo ================================================================
 echo.
 pause
@@ -2050,7 +2050,7 @@ set /a totalCleanCount=cleanCount+ncchRootCount
 if %totalCleanCount% EQU 0 (
     echo No temporary files found.
     echo.
-    echo Your workspace is already clean!
+    echo Your workspace is already clean^^!
     echo.
     pause
     goto menu
@@ -2125,7 +2125,7 @@ for %%f in (temp_result.json temp_file_list.txt) do (
 
 echo.
 echo ================================================================
-echo  [SUCCESS] Cleanup complete!
+echo  [SUCCESS] Cleanup complete^^!
 echo  Removed %deletedCount% item^(s^)
 echo ================================================================
 echo %date% - %time:~0,-3% = [i] Cleaned %deletedCount% temp files >> "!LogFile!"
@@ -2189,7 +2189,7 @@ if !totalOps! GTR 0 (
     echo.
 )
 
-echo Thank you for using 3DS ROM Manager Suite!
+echo Thank you for using 3DS ROM Manager Suite^^!
 echo.
 echo %date% - %time:~0,-3% = [i] Session Ended >> "!LogFile!"
 pause
@@ -2226,7 +2226,7 @@ echo   https://github.com/3DSGuy/Project_CTR/releases
 echo.
 echo Extract and place in: %cd%\bin\
 echo.
-echo %date% - %time:~0,-3% = [!] Missing required tools >> "!LogFile!"
+echo %date% - %time:~0,-3% = [^^!] Missing required tools >> "!LogFile!"
 pause
 exit
 
@@ -2249,7 +2249,7 @@ echo   https://github.com/ihaveamac/3dsconv/releases
 echo.
 echo Extract 3dsconv.exe and place in: %cd%\bin\
 echo.
-echo %date% - %time:~0,-3% = [!] Missing 3dsconv >> "!LogFile!"
+echo %date% - %time:~0,-3% = [^^!] Missing 3dsconv >> "!LogFile!"
 pause
 exit
 

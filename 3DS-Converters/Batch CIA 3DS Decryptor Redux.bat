@@ -82,8 +82,8 @@ if not exist "bin" mkdir "bin"
 if not exist "!logfile!" (
     echo Batch CIA 3DS Decryptor Redux !Version! > "!logfile!"
     echo [i] = Information >> "!logfile!"
-    echo [!] = Error >> "!logfile!"
-    echo [^] = Warning >> "!logfile!"
+    echo [^^!] = Error >> "!logfile!"
+    echo [~] = Warning >> "!logfile!"
     echo. >> "!logfile!"
     echo Log Created: %date% %time% >> "!logfile!"
     echo. >> "!logfile!"
@@ -329,7 +329,7 @@ for %%a in (*.3ds *.cci) do (
             if "!autoMode!"=="0" timeout /t 1 >nul
         ) else (
             if "!autoMode!"=="0" echo [SKIP] !finalOutput! exists
-            echo %date% - %time:~0,-3% = [^] 3DS file "!FileName!" was already decrypted >> "!logfile!"
+            echo %date% - %time:~0,-3% = [~] 3DS file "!FileName!" was already decrypted >> "!logfile!"
             set /a skipped3DS+=1
             set /a finalCount+=1
         )
@@ -373,7 +373,7 @@ if "!isDecrypted!"=="0" (
 :: Check if already decrypted
 if "!isDecrypted!"=="1" (
     if "!autoMode!"=="0" echo [SKIP] Already decrypted
-    echo %date% - %time:~0,-3% = [^] 3DS file "!baseName!" [!TitleId! v!TitleVersion!] is already decrypted >> "!logfile!"
+    echo %date% - %time:~0,-3% = [~] 3DS file "!baseName!" [!TitleId! v!TitleVersion!] is already decrypted >> "!logfile!"
     set /a skipped3DS+=1
     exit /b 0
 )
@@ -433,7 +433,7 @@ if exist "!outputFile!" (
     set /a finalCount+=1
 ) else (
     if "!autoMode!"=="0" echo [FAIL] Decryption failed
-    echo %date% - %time:~0,-3% = [!] Decrypting failed for "!baseName!" >> "!logfile!"
+    echo %date% - %time:~0,-3% = [^^!] Decrypting failed for "!baseName!" >> "!logfile!"
     set /a failed3DS+=1
 )
 
@@ -494,17 +494,17 @@ for %%a in (*.cia) do (
                     call :convertExistingCIAtoCCI "!FileName!"
                 ) else (
                     if "!autoMode!"=="0" echo [SKIP] Already converted to CCI
-                    echo %date% - %time:~0,-3% = [^] CIA file "!FileName!" was already converted to CCI >> "!logfile!"
+                    echo %date% - %time:~0,-3% = [~] CIA file "!FileName!" was already converted to CCI >> "!logfile!"
                     set /a finalCount+=1
                 )
             ) else (
                 if "!autoMode!"=="0" echo [SKIP] Already decrypted
-                echo %date% - %time:~0,-3% = [^] CIA file "!FileName!" was already decrypted >> "!logfile!"
+                echo %date% - %time:~0,-3% = [~] CIA file "!FileName!" was already decrypted >> "!logfile!"
                 set /a finalCount+=1
             )
         ) else if exist "!FileName!*!suffix!.cci" (
             if "!autoMode!"=="0" echo [SKIP] Already converted to CCI
-            echo %date% - %time:~0,-3% = [^] CIA file "!FileName!" was already converted to CCI >> "!logfile!"
+            echo %date% - %time:~0,-3% = [~] CIA file "!FileName!" was already converted to CCI >> "!logfile!"
             set /a finalCount+=1
         ) else (
             if "!autoMode!"=="0" (
@@ -555,7 +555,7 @@ set /p "ctrtool_data="<"!content!"
 echo "!ctrtool_data!" | findstr "ERROR" >nul 2>&1
 if not errorlevel 1 (
     if "!autoMode!"=="0" echo [FAIL] Invalid CIA file
-    echo %date% - %time:~0,-3% = [!] CIA is invalid [!baseName!.cia] >> "!logfile!"
+    echo %date% - %time:~0,-3% = [^^!] CIA is invalid [!baseName!.cia] >> "!logfile!"
     set /a failedCIA+=1
     exit /b 0
 )
@@ -567,7 +567,7 @@ set "isEncrypted=!errorlevel!"
 echo "!CryptoKey!" | findstr "None" >nul 2>&1
 if not errorlevel 1 (
     if "!autoMode!"=="0" echo [SKIP] Already decrypted
-    echo %date% - %time:~0,-3% = [^] CIA file "!baseName!" [!TitleId! v!TitleVersion!] is already decrypted >> "!logfile!"
+    echo %date% - %time:~0,-3% = [~] CIA file "!baseName!" [!TitleId! v!TitleVersion!] is already decrypted >> "!logfile!"
     set /a skippedCIA+=1
     exit /b 0
 )
@@ -652,8 +652,8 @@ if not errorlevel 1 (
 
 :: Unknown type
 if "!CIAType!"=="0" (
-    echo %date% - %time:~0,-3% = [!] Could not determine CIA type [!baseName!.cia] >> "!logfile!"
-    echo %date% - %time:~0,-3% = [!] Please report !titleId! v!titleVer! to the developer >> "!logfile!"
+    echo %date% - %time:~0,-3% = [^^!] Could not determine CIA type [!baseName!.cia] >> "!logfile!"
+    echo %date% - %time:~0,-3% = [^^!] Please report !titleId! v!titleVer! to the developer >> "!logfile!"
     set /a failedCIA+=1
 )
 
@@ -710,7 +710,7 @@ if exist "!finalCIA!" (
     )
 ) else (
     if "!autoMode!"=="0" echo [FAIL] Decryption failed
-    echo %date% - %time:~0,-3% = [!] Decrypting failed [!TitleId! v!titleVer!] >> "!logfile!"
+    echo %date% - %time:~0,-3% = [^^!] Decrypting failed [!TitleId! v!titleVer!] >> "!logfile!"
     set /a failedCIA+=1
 )
 
@@ -761,12 +761,12 @@ if exist "bin\00000000.app" (
         set /a finalCount+=1
     ) else (
         if "!autoMode!"=="0" echo [FAIL] TWL decryption failed
-        echo %date% - %time:~0,-3% = [!] Decrypting failed [!titleId! v!titleVer!] >> "!logfile!"
+        echo %date% - %time:~0,-3% = [^^!] Decrypting failed [!titleId! v!titleVer!] >> "!logfile!"
         set /a failedCIA+=1
     )
 ) else (
     if "!autoMode!"=="0" echo [FAIL] Could not extract TWL content
-    echo %date% - %time:~0,-3% = [!] Could not extract TWL content [!titleId! v!titleVer!] >> "!logfile!"
+    echo %date% - %time:~0,-3% = [^^!] Could not extract TWL content [!titleId! v!titleVer!] >> "!logfile!"
     set /a failedCIA+=1
 )
 
@@ -806,7 +806,7 @@ echo "!TitleId!" | findstr /i "000400db 0004001b 0004009b 00040010 00040030 0004
 if not errorlevel 1 (
     :: Title type doesn't support CCI conversion
     if "!autoMode!"=="0" echo [ OK ] !ciaPath! created (CCI not supported)
-    echo %date% - %time:~0,-3% = [!] Converting to CCI for this title is not supported [!TitleId! v!TitleVersion!] >> "!logfile!"
+    echo %date% - %time:~0,-3% = [^^!] Converting to CCI for this title is not supported [!TitleId! v!TitleVersion!] >> "!logfile!"
     set /a successCIA+=1
     set /a finalCount+=1
     exit /b 0
@@ -828,7 +828,7 @@ if exist "!cciPath!" (
     set /a finalCount+=1
 ) else (
     if "!autoMode!"=="0" echo [ OK ] !ciaPath! created (CCI conversion failed)
-    echo %date% - %time:~0,-3% = [!] Converting to CCI failed [!ciaPath!] >> "!logfile!"
+    echo %date% - %time:~0,-3% = [^^!] Converting to CCI failed [!ciaPath!] >> "!logfile!"
     set /a successCIA+=1
     set /a finalCount+=1
 )
@@ -838,7 +838,7 @@ exit /b 0
 :: ============================================================================
 :: FUNCTION: Log CIA System Type
 :: ============================================================================
-:logCIASysFile
+:logCIASystemType
 set "checkId=%~1"
 set "fileName=%~2"
 set "version=%~3"
@@ -990,7 +990,7 @@ echo ================================================================
 
 if %totalSuccess% GTR 0 (
     echo.
-    echo  [SUCCESS] %totalSuccess% file^(s^) decrypted!
+    echo  [SUCCESS] %totalSuccess% file^(s^) decrypted^^!
     echo.
     
     if %success3DS% GTR 0 (
@@ -1067,7 +1067,7 @@ echo ================================================================
 echo   Batch CIA 3DS Decryptor Redux !Version!
 echo ================================================================
 echo.
-echo No CIA or 3DS files found!
+echo No CIA or 3DS files found^^!
 echo.
 if "!addDecryptedSuffix!"=="1" (
     echo NOTE: Files with "!suffix!" suffix are skipped.
@@ -1077,7 +1077,7 @@ echo Please review "!logfile!" for more details.
 echo.
 echo ================================================================
 echo.
-echo %date% - %time:~0,-3% = [^] No CIA or 3DS files found >> "!logfile!"
+echo %date% - %time:~0,-3% = [~] No CIA or 3DS files found >> "!logfile!"
 echo %date% - %time:~0,-3% = [i] Script execution ended >> "!logfile!"
 pause
 endlocal
@@ -1119,7 +1119,7 @@ echo   3. Restart this script
 echo.
 echo ================================================================
 echo.
-echo %date% - %time:~0,-3% = [!] Missing required tools >> "!logfile!"
+echo %date% - %time:~0,-3% = [^^!] Missing required tools >> "!logfile!"
 echo %date% - %time:~0,-3% = [i] Script execution ended >> "!logfile!"
 pause
 endlocal
@@ -1142,11 +1142,11 @@ echo.
 echo   - Windows 7 SP1 [x64] or higher
 echo   - Windows Server 2008 R2 SP1 [x64] or higher
 echo.
-echo Script execution halted!
+echo Script execution halted^^!
 echo.
 echo ================================================================
 echo.
-echo %date% - %time:~0,-3% = [!] 32-bit or unsupported OS detected >> "!logfile!"
+echo %date% - %time:~0,-3% = [^^!] 32-bit or unsupported OS detected >> "!logfile!"
 echo %date% - %time:~0,-3% = [i] Script execution ended >> "!logfile!"
 pause
 endlocal
